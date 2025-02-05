@@ -1,23 +1,5 @@
 import * as React from 'react';
-import {
-  Animated,
-  DeviceEventEmitter,
-  Dimensions,
-  EmitterSubscription,
-  InteractionManager,
-  KeyboardAvoidingView,
-  Modal,
-  PanResponder,
-  BackHandler,
-  PanResponderGestureState,
-  PanResponderInstance,
-  Platform,
-  StyleProp,
-  TouchableWithoutFeedback,
-  View,
-  ViewStyle,
-  ViewProps,
-} from 'react-native';
+import { Animated, EmitterSubscription,NativeEventSubscription, PanResponderGestureState, PanResponderInstance, StyleProp, ViewStyle, ViewProps } from 'react-native';
 import * as PropTypes from 'prop-types';
 import * as animatable from 'react-native-animatable';
 import {Animation, CustomAnimation} from 'react-native-animatable';
@@ -204,7 +186,7 @@ export class ReactNativeModal extends React.Component<ModalProps, State> {
   contentRef: any;
   panResponder: OrNull<PanResponderInstance> = null;
   didUpdateDimensionsEmitter: OrNull<EmitterSubscription> = null;
-
+  backHandlerEventSubscription: OrNull<NativeEventSubscription> = null;
   interactionHandle: OrNull<number> = null;
 
   constructor(props: ModalProps) {
